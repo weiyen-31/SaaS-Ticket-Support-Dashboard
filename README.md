@@ -205,6 +205,7 @@ Important limitation: This analysis is based on synthetic data. The findings ide
 ## Repository Structure
 The repository may be organized as follows, depending on the files included in the final project:
 
+```
 IT-Support-Ticket-Analytics
 │
 ├── Dataset
@@ -219,6 +220,7 @@ IT-Support-Ticket-Analytics
 │
 │
 └── README.md
+```
 
 ## Tools & Technologies
 | Tool | Purpose |
