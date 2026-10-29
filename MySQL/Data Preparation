@@ -1,0 +1,88 @@
+-- IMPORT DATA (stg1)
+
+CREATE TABLE `stg1_tickets_raw` (
+	`ticket_id` text,
+    `created_at` text,
+    `customer_id` text, 
+    `customer_segment` text, 
+    `channel` text, 
+    `product_area` text, 
+    `issue_type` text, 
+    `priority` text, 
+    `status` text, 
+    `sla_plan` text, 
+    `initial_message` text, 
+    `agent_first_reply` text, 
+    `resolution_summary` text, 
+    `resolution_time_hours` text, 
+    `reopened` text, 
+    `customer_sentiment` text, 
+    `csat_score` text, 
+    `has_attachment` text, 
+    `platform` text, 
+    `region` text
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+    
+SET GLOBAL LOCAL_INFILE = ON;
+
+LOAD DATA INFILE "C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/synthetic_it_support_tickets.csv"
+INTO TABLE `IT support tickets staging 1`
+CHARACTER SET utf8mb4
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
+
+
+-- Extract Dataset
+  
+DESCRIBE stg2_tickets_cleaned;
+
+SELECT  'ticket_ID',
+		'created_date_time',
+		'customer_id',
+		'customer_segment', 
+		'channel', 
+		'product_area', 
+		'issue_type', 
+		'priority', 
+		'status', 
+		'sla_plan', 
+		'initial_message', 
+		'agent_first_reply', 
+		'resolution_summary', 
+		'resolution_time_hours', 
+		'reopened', 
+		'customer_sentiment', 
+		'csat_score', 
+		'has_attachment', 
+		'platform', 
+		'region'
+-- FROM stg2_tickets_cleaned
+UNION ALL
+SELECT 	ticket_ID,
+		created_date_time,
+		customer_id,
+		customer_segment, 
+		`channel`, 
+		product_area, 
+		issue_type, 
+		priority, 
+		`status`, 
+		sla_plan, 
+		initial_message, 
+		agent_first_reply, 
+		resolution_summary, 
+		resolution_time_hours, 
+		reopened, 
+		customer_sentiment, 
+		csat_score, 
+		has_attachment, 
+		platform, 
+		region
+FROM stg2_tickets_cleaned
+INTO OUTFILE 
+'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/synthetic_it_support_tickets_cleaned3.csv'
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n';
