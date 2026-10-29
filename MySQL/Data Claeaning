@@ -1,0 +1,72 @@
+INSERT INTO `stg2_tickets_cleaned`
+
+SELECT REPLACE(ticket_id,"_"," "),
+	   str_to_date(created_at, '%Y-%m-%dT%H:%i:%s'),
+       REPLACE(customer_id,"_"," "),
+       CASE customer_segment
+			WHEN "individual" THEN "Individual"
+			WHEN "small_business" THEN "Small Business"
+			WHEN "education" THEN "Education"
+			WHEN "enterprise" THEN "Enterprise"
+			WHEN "non_profit" THEN "Non Profit"
+	   END AS customer_segment,
+       CASE `channel`
+			WHEN "email" THEN "Email"
+			WHEN "in_app" THEN "In App"
+			WHEN "chat" THEN "Chat"
+			WHEN "phone_transcript" THEN "Phone Transcript"
+			WHEN "web_form" THEN "Web Form"
+	   END AS `channel`,
+       CASE product_area
+			WHEN "data_export" THEN "Data Export"
+			WHEN "billing" THEN "Billing"
+			WHEN "api_integration" THEN "API Intergration"
+			WHEN "analytics_dashboard" THEN "Analytics Dashboard"
+			WHEN "login_auth" THEN "Login Auth"
+			WHEN "mobile_app" THEN "Mobile App"
+			WHEN "notifications" THEN "Notifications"
+	   END AS product_area,
+	   CASE issue_type
+			WHEN "account_access" THEN "Account Access"
+			WHEN "security_concern" THEN "Security Concern"
+			WHEN "bug" THEN "Bug"
+			WHEN "billing_problem" THEN "Billing Problem"
+			WHEN "performance" THEN "Performance"
+			WHEN "feature_request" THEN "Feature Request"
+			WHEN "how_to" THEN "How To"
+			WHEN "other" THEN "Other"
+	   END AS issue_type,
+       CONCAT(UPPER(LEFT(priority,1)),
+			  LOWER(SUBSTRING(priority,2))),
+	   CASE `status` 
+			WHEN "resolved" THEN "Resolved"
+			WHEN "closed_no_action" THEN "Closed No Action"
+			WHEN "in_progress" THEN "In Progress"
+			WHEN "on_hold" THEN "On Hold"
+			WHEN "open" THEN "Open"
+	   END AS `status`,
+       CONCAT(UPPER(LEFT(sla_plan,1)),
+			  LOWER(SUBSTRING(sla_plan,2))),
+	   initial_message,
+       agent_first_reply,
+       NULLIF(resolution_summary,''),
+       NULLIF(resolution_time_hours,''),
+       reopened,
+       CASE customer_sentiment
+			WHEN "very_negative" THEN "Very Negative"
+			WHEN "neutral" THEN "Neutral"
+			WHEN "positive" THEN "Positive"
+			WHEN "negative" THEN "Negative"
+			WHEN "very_positive" THEN "Very Positive"
+	   END AS customer_sentiment,
+       csat_score,
+       has_attachment,
+       CASE platform
+			WHEN "android" THEN "Android"
+			WHEN "web" THEN "Web"
+			WHEN "ios" THEN "IOS"
+			WHEN "api_client" THEN "API Client"
+			WHEN "desktop_app" THEN "Desktop App"
+	   END AS platfrom,
+       region
+FROM stg1_tickets_raw
