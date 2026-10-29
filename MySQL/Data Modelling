@@ -1,0 +1,24 @@
+- STAGE 2 TABLE
+
+CREATE TABLE `stg2_tickets_cleaned` (
+	`ticket_ID` varchar (20),
+    `created_date_time` DATETIME,
+    `customer_id` varchar(20),
+    `customer_segment` varchar(30), 
+    `channel` varchar(30), 
+    `product_area` varchar(50), 
+    `issue_type` varchar(50), 
+    `priority` varchar(30), 
+    `status` varchar(30), 
+    `sla_plan` varchar(30), 
+    `initial_message` text, 
+    `agent_first_reply` text, 
+    `resolution_summary` text, 
+    `resolution_time_hours` decimal (10,2), 
+    `reopened` int, 
+    `customer_sentiment` varchar(30), 
+    `csat_score` int, 
+    `has_attachment` int, 
+    `platform` varchar(30), 
+    `region` varchar(30)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
