@@ -193,10 +193,10 @@ The key business question is therefore not simply whether these tickets were mar
 Mobile App security-related tickets may benefit from a more structured investigation, resolution verification, and follow-up process to reduce recurring cases and improve customer experience.
 
 #### Business Recommendations
-**1. Standardize the handling of reported security concerns.** Define clear procedures for assessing, documenting and escalating suspected vulnerabilities to the appropriate technical or security team.
-**2. Strengthen resolution verification.** Establish suitable checks to confirm that the required investigation and corrective actions have been completed before closing a ticket.
-**3. Review reopened cases.** Examine reasons of security-related tickets are reopened and identify whether recurring problems, incomplete fixes or communication gaps that require further attention.
-**4. Monitor resolution outcomes.** Track reopened rate, resolution time and CSAT to evaluate whether changes to the handling process improve the customer support experience.
+1. **Standardize the handling of reported security concerns.** Define clear procedures for assessing, documenting and escalating suspected vulnerabilities to the appropriate technical or security team.
+2. **Strengthen resolution verification.** Establish suitable checks to confirm that the required investigation and corrective actions have been completed before closing a ticket.
+3. **Review reopened cases.** Examine reasons of security-related tickets are reopened and identify whether recurring problems, incomplete fixes or communication gaps that require further attention.
+4. **Monitor resolution outcomes.** Track reopened rate, resolution time and CSAT to evaluate whether changes to the handling process improve the customer support experience.
 
 Business Objective: Improve the consistency of security-related ticket handling, identify opportunities to reduce recurring cases, and strengthen customer confidence in the support process.
 
